@@ -3,10 +3,17 @@ import { PRODUCTS } from '../../Products'
 import {ShopContext} from '../../context/ShopContextProvider'
 import CartItem from './CartItem'
 import './cart.css'
+import { useNavigate } from 'react-router-dom'  // use this hook to navigate to another route to react-router
 
 const Cart = () => {
 
-  const {cartItems} = useContext(ShopContext) //grab the cartItems from the context
+  const {cartItems, getTotalCartAmount} = useContext(ShopContext) //grab the cartItems from the context
+
+  //grab total amount from the function
+  const totalAmount = getTotalCartAmount();
+
+  //to navigate use this function navigate
+  const navigate= useNavigate();
 
   return (
     <div className='cart'>
@@ -22,6 +29,18 @@ const Cart = () => {
             }
         })}
       </div>
+        {/*logic to display if there is no items in cart then display "your cart is empty" */}
+        {totalAmount > 0 ?
+          //if totalAmount is greater than 0 then display this div
+          <div className='checkout'>
+            <p>Subtotal: ${totalAmount}</p>
+            {/*use navigate as the method of navigation, in our case shop page is on empty route */}
+            <button onClick={() => navigate("/")}> Continue shopping</button>
+            <button> Checkout</button>
+          </div>
+          // if totalAmount is = 0, display cart is empty
+        : <h1> Your cart is empty</h1>}
+
     </div>
   )
 }
