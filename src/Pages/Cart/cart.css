@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.cart{
+}
+.carttitle{
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 1rem 0;
+    margin: 30px 0;
+}
+.cart_item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.2);
+    margin: 30px;
+
+}
+.cart_item img{
+    width: 200px;
+}
